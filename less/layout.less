@@ -1,0 +1,287 @@
+/**
+ * main.css
+ *
+ * 2. Masthead area
+ * 3. Main content and sidebar
+ * 4. Footer
+ * 5. Media queries for responsive layout
+ *
+ */
+
+
+/*********************************************************************
+ * 2. Masthead area
+ *
+ */
+
+
+form.search {
+	float: right;
+	margin: 0;
+	width: 20%;
+}
+	form.search input {
+		margin: 0;
+		padding: 0.25em 0.5em;
+		border: 1px solid #ccc;
+		width: 100%;
+	}
+	form.search button {
+		display: none;
+	}
+
+.breadcrumbs {
+	clear: both;
+	padding-top: 1em;
+}
+	.breadcrumbs span:after {
+		content: ">";
+		color: #999;
+		padding-left: 0.5em;
+		padding-right: 0.25em;
+	}
+
+/*********************************************************************
+ * 3. Main content and sidebar
+ *
+ */
+
+
+.align_left {
+	/* for images placed in rich text editor */
+	float: left;
+	margin: 0 1em 0.5em 0;
+	position: relative;
+	top: 0.5em;
+	max-width: 50%;
+}
+
+.align_right {
+	/* for images placed in rich text editor */
+	float: right;
+	margin: 0 0 0.5em 1em;
+	max-width: 50%;
+}
+
+.align_center {
+	/* for images placed in rich text editor */
+	display: block;
+	margin: 1em auto;
+	position: relative;
+	top: 0.5em;
+}
+
+
+/*********************************************************************
+ * 4. Footer
+ *
+ */
+
+body > footer {
+	border-top: 1px solid #eee;
+	font-size: .8em;
+	margin-top: 3em;
+	color: #666;
+}
+
+
+@media only screen and (min-width: 80em) {
+	/* extra-wide desktop layout */
+
+	body, td, textarea {
+		font-size: 115%;
+	}
+}
+
+aside.about
+{
+	border-top: 1px solid #eee;
+	margin-top: 3em;
+	img
+	{
+		border-radius: 100%;
+	}
+}
+
+/* TAGS */
+
+
+.tags > *,
+.tag
+{
+	color: #333;
+	background: #f1f1f1;
+	text-shadow: 0 1px 1px rgba(255,255,255,.5);
+	display: inline-block;
+	margin-right: .25em;
+	border-radius: 0 .125em .125em 0;
+	padding: 0 .25em 0 .5em;
+	line-height: 1.5;
+	box-shadow: inset 0.25em 0 0 rgba(0,0,0,.25);
+	font-weight: 400;
+	font-family: @fontCaption;
+	small
+	{
+		font-size: .7em;
+	}
+}
+
+
+.home
+{
+
+	article
+	{
+		padding-right: .5em;
+		&:first-child
+		{
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+	}
+
+}
+
+h1 img
+{
+	vertical-align: middle;
+}
+
+.article-page
+{
+	footer
+	{
+		border-top: 1px solid #eee;
+		font-size: 80%;
+	}
+	header
+	{
+		p
+		{
+			font-size: 1.125em;
+		}
+	}
+}
+
+iframe
+{
+	border: none;
+	display: block;
+	box-shadow: 1px 0 1px @colorShadow;
+	&+ .code-info
+	{
+		margin-bottom: 2em;
+		border-top: 2px solid;
+		> *
+		{
+			border: none;
+			float: right;
+			font-size: 1em;
+			line-height: 1.5;
+			padding: 0 .5em 0 3em;
+			background: linear-gradient(@bevelLeftLower, #fff 1.5em, transparent 1.5em);
+		}
+	}
+}
+
+body > header
+{
+	text-align: center;
+	a
+	{
+		color: @colorFillDark;
+		border: none;
+		&:hover
+		{
+			color: lighten(@colorFillDark, 10%);
+		}
+	}
+}
+
+nav
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: .5em;
+	background: #DDD;
+	a
+	{
+		margin-left: 2em;
+		line-height: 3rem;
+		font-size: 1rem;
+		text-transform: uppercase;
+		font-family: @fontMain;
+	}
+}
+
+time
+{
+	font-weight: 600;
+	font-size: .8em;
+}
+
+
+.lesson-title
+{
+	text-align: center;
+	.border(fadeout(@colorShadow, 25%), -.2em);
+	*
+	{
+		font-weight: 600;
+		color: #FEFEFE;
+		display: block;
+		border: none;
+	}
+	a span
+	{
+		font-size: 1.2em;
+	}
+	small
+	{
+		padding: .5em 0;
+		line-height: 1.25;
+		&.lesson-summary
+		{
+			font-weight: 400;
+		}
+	}
+}
+
+.summary
+{
+	font-size: 1.1em;
+}
+
+/* SOCIAL ICONS */
+.social
+{
+	> *
+	{
+		@padding: .33em;
+		.transition(.75s);
+		box-sizing: content-box;
+		border-radius: 100%;
+		padding: @padding;
+		width: 32px;
+		height: 32px;
+		display: inline-block;
+		background-position: @padding;
+		background-repeat: no-repeat;
+		&:hover
+		{
+			border-radius: .25em;
+		}
+	}
+	.social-twitter
+	{
+		background-color: #55ACEE;
+		background-image: url(../img/twitter-32.png);
+	}
+	.social-github
+	{
+		background-color: #444;
+		background-image: url(../img/github-32.png);
+	}
+}
