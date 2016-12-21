@@ -17,8 +17,8 @@ module.exports = {
             { test: /\.js$/, loader: 'source-map' },
         ],
         loaders: [
-            { test: /\.(jpe?g|png|gif|mp4)$/i, loader: 'file?name=img/[name].[ext]'},
-            { test: /fonts\/.*\.(woff|eot|svg|otf|ttf)$/i, loader: `file?name=fonts/[name].[ext]`},
+            //{ test: /\.(jpe?g|png|gif|mp4)$/i, loader: 'file?name=img/[name].[ext]'},
+            //{ test: /fonts\/.*\.(woff|eot|svg|otf|ttf)$/i, loader: `file?name=fonts/[name].[ext]`},
             { test: /\.html$|\.js$/, loader: 'babel', query: { presets: 'es2015-riot' }},
             { test: /\.less$/, loader: ExtractTextPlugin.extract('raw!postcss!less')},
             { test: /\.json$/, loader: 'json'},
@@ -34,7 +34,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             riot: 'riot'
         }),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("css/[name].css")
     ],
     devServer: {
         port: 8080,

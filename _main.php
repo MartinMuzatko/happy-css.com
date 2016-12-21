@@ -37,7 +37,7 @@ if ($page->template->name != 'json') {
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><?=$page->title?> | <?=$homepage->headline?></title>
 	<meta name="description" content="<?=$page->summary?>" />
-	<link rel="stylesheet" type="text/css" href="<?=$assets?>main.css">
+	<link rel="stylesheet" type="text/css" href="<?=$assets?>css/main.css">
 
 	<meta prefix="og: http://ogp.me/ns#" property="og:description" content="<?=$page->summary?>" />
 	<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article" />
