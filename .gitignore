@@ -1,6 +1,6 @@
 node_modules
+.DS_Store
 .ftpconfig
+main.js.map
 main.js
 main.css
-main.js.map
-.DS_Store
