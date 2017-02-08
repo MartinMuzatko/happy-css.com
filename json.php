@@ -3,9 +3,25 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+try {
+    if (!$user->isLoggedIn()) {
+        if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
+            if (!$session->login($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])) {
+                throw new Exception;
+            }
+        } else {
+            throw new Exception;
+        }
+    }
+} catch (Exception $e) {
+    header('WWW-Authenticate: Basic realm="Happy-CSS"');
+    http_response_code(401);
+    die;
+}
+
+
 $method = $_SERVER['REQUEST_METHOD'];
 //$json = ['message'=>'NONE'];
-$maxChars = 4;
 //$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 
 
@@ -63,22 +79,31 @@ switch ($method) {
             'children' => (string) $page->children,
             'parent' => (string) $page->parent,
         ];
-        foreach ($fields->find('*') as $field) {
-            $json[$field->name] = htmlentities($page->{$field->name});
+        foreach ($page->fields as $field) {
+            $json[$field->name] = [
+                'value' => htmlentities($page->{$field->name}),
+                'field' => (array) $page->fields->{$field->name}
+            ];
         }
         foreach ($additionalFields as $field => $value) {
-            $json[$field] = $value;
+            $json[$field] = [
+                'value' => $value,
+                'field' => $fields->{$field}
+            ];
         }
     break;
     default:
         //handle_error($request);
     break;
 }
-//ob_clean();
-//header('Access-Control-Allow-Origin: https://martinmuzatko.github.io');
-//header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
-//header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-//http_response_code(200);
 
+// ob_clean();
+// access from somewhere else than the origin?
+// header('Access-Control-Allow-Origin: https://martinmuzatko.github.io');
+// header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
+// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+// http_response_code(200);
 
+// only set content-type when successfull, otherwise we set html so we can still read errors WHILE developing
+header("Content-Type: application/json");
 echo json_encode($json);
