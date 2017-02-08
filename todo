@@ -1,0 +1,51 @@
+layout home:
+    search (just the icon)
+
+    sitename
+    description
+    image
+
+    nav
+        articles
+        projects
+        lessons
+        talks
+
+    description of page ()
+
+    All content/Stream
+        mixed: lessons, articles, talks
+
+    About me
+
+    footer
+
+layout page:
+    home
+    header
+        image
+        h1
+        description
+        author
+        follow (https://img.shields.io/twitter/follow/martinmuzatko.svg?style=social&label=Follow%20Martin)
+    sections
+    footer
+
+layout overview:
+    home
+    search
+
+    nav
+        contents
+            (how do I manage overviews with overviews and just pages as children)
+            overview:
+                categories
+                    title
+                    summary
+                    pages (max first 5)
+            page:
+                list of pages
+                    title
+                    summary
+                    image
+                    read time
