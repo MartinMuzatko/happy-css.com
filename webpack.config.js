@@ -8,8 +8,8 @@ module.exports = {
     entry: './index.js',
     output: {
         path: './',
-        filename: '[name].js',
-        sourceMapFilename: "[name].js.map",
+        filename: './js/[name].js',
+        sourceMapFilename: "./js/[name].js.map",
     },
     module: {
         preLoaders: [
@@ -19,8 +19,9 @@ module.exports = {
         loaders: [
             //{ test: /\.(jpe?g|png|gif|mp4)$/i, loader: 'file?name=img/[name].[ext]'},
             //{ test: /fonts\/.*\.(woff|eot|svg|otf|ttf)$/i, loader: `file?name=fonts/[name].[ext]`},
-            { test: /\.html$|\.js$/, loader: 'babel', query: { presets: 'es2015-riot' }},
+            { test: /\.js|\.html$/, loader: 'babel', query: { presets: 'es2015-riot' }},
             { test: /\.less$/, loader: ExtractTextPlugin.extract('raw!postcss!less')},
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract('raw!postcss!sass')},
             { test: /\.json$/, loader: 'json'},
         ]
     },

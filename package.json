@@ -1,26 +1,50 @@
 {
-  "name": "happy-css.com",
+  "name": "happy-css",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "src/flex-grid.scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinMuzatko/happy-css.git"
+  },
+  "keywords": [
+    "processwire",
+    "theme"
+  ],
+  "author": {
+    "name": "Martin Muzatko",
+    "email": "martin@happy-css.com",
+    "url": "https://happy-css.com"
+  },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MartinMuzatko/happy-css/issues"
+  },
+  "homepage": "https://martinmuzatko.github.io/happy-css",
   "dependencies": {
-    "autoprefixer": "^6.5.4",
-    "babel": "^6.5.2",
-    "babel-core": "^6.21.0",
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015-riot": "^1.1.0",
     "css-loader": "^0.26.1",
-    "cssnano": "^3.9.1",
+    "eslint": "^3.15.0",
+    "eslint-loader": "^1.6.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
-    "less": "^2.7.1",
+    "file-loader": "^0.10.0",
+    "flexproperties": "^1.1.2",
+    "html-loader": "^0.4.4",
+    "less": "^2.7.2",
     "less-loader": "^2.2.3",
-    "postcss": "^5.2.6",
-    "postcss-loader": "^1.2.1",
+    "node-sass": "^4.5.0",
+    "normalize.css": "^5.0.0",
+    "postcss": "^5.2.12",
+    "postcss-loader": "^1.2.2",
     "raw-loader": "^0.5.1",
-    "source-map-loader": "^0.1.5",
+    "riot": "^3.1.1",
+    "riotjs-loader": "^4.0.0",
+    "sass-loader": "^4.1.1",
+    "source-map-loader": "^0.1.6",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^1.9.11"
   }
 }
