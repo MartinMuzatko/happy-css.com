@@ -1,5 +1,6 @@
 header {
-    background: @color-secondary-light;
+    .stripe(medium, medium, @color-dark);
+    color: @color-light;
     > div {
         padding: 1em 0;
     }
@@ -9,6 +10,10 @@ header {
     .title {
         font-size: 2em;
     }
+}
+
+main > section {
+    .stripe();
 }
 
 header nav {
