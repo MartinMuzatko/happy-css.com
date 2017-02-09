@@ -70,25 +70,29 @@ switch ($method) {
     break;
     case 'GET':
         $json = [];
+        $connections = [];
+        foreach ($page->children as $key => $child) {
+            $connections[$child->id] = $child->httpUrl;
+        }
         $additionalFields = [
             'created' => $page->created.'000',
             'published' => $page->published.'000',
             'modified' => $page->modified.'000',
             'createdUser' => $page->createdUser->name,
             'modifiedUser' => $page->modifiedUser->name,
-            'children' => (string) $page->children,
             'parent' => (string) $page->parent,
+            'template' => $page->template->name
         ];
+        $json['children'] = $connections;
         foreach ($page->fields as $field) {
             $json[$field->name] = [
                 'value' => htmlentities($page->{$field->name}),
-                'field' => (array) $page->fields->{$field->name}
+                'field' => json_decode(json_encode($page->{$field->name}))
             ];
         }
         foreach ($additionalFields as $field => $value) {
             $json[$field] = [
-                'value' => $value,
-                'field' => $fields->{$field}
+                'value' => $value
             ];
         }
     break;
