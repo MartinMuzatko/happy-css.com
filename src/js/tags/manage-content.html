@@ -1,0 +1,15 @@
+<manage-content>
+    <header>
+        <h1>{page.title.value}</h1>
+        <p class="description">{page.summary.value}</p>
+    </header>
+    <main>
+        <section each={child in children}>
+            <h2>{child.title.value}</h2>
+        </section>
+    </main>
+    <script>
+        this.children = opts.children
+        this.page = opts.page
+    </script>
+</manage-content>

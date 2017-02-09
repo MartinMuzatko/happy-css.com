@@ -10,10 +10,10 @@
             </div>
         </section>
     <? endforeach; ?>
-    <? if($user->isLoggedin()): ?>
-        <add-content></add-content>
-    <? endif; ?>
 </main>
+<? if($user->isLoggedin()): ?>
+<add-content></add-content>
+<? endif; ?>
 <?php if($user->isLoggedin()) {
     echo "<p><a href='$page->editURL'>Edit</a></p>";
 } ?>

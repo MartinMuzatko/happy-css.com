@@ -1,5 +1,48 @@
 <add-content>
-    <b>example!</b>
+    <div ref="mount"></div>
     <script>
+
+        import './manage-content.html'
+        import request from 'browser-request'
+
+        this.resturl = location.href + '?json'
+
+        this.page = ""
+
+        this.on('before-mount', ()=>{
+            // hide content and fetch new content to load it
+            document.querySelector('main').style.display = 'none'
+            document.querySelector('header').style.display = 'none'
+
+            // get all data required to work with the children elements
+            this.getData().then(()=>{
+                riot.mount(this.refs.mount, 'manage-content', {
+                    page: this.page,
+                    children: this.children
+                })
+                this.update()
+                //this.startEditor()
+            })
+        })
+
+        this.getData = () => {
+            return new Promise((resolve, reject) => {
+                request.get(this.resturl, (error, response, body)=>{
+                    this.page = JSON.parse(body)
+                    for (var children in this.page.children) {
+                        var url = this.page.children[children] + '?json'
+                        this.children = []
+                        request.get(url, (error, response, body)=>{
+                            this.children.push(JSON.parse(body))
+                            if (Object.keys(this.page.children).length == this.children.length) {
+                                resolve()
+                            }
+                        })
+                    }
+                })
+            })
+        }
+
+        //this.startEditor()
     </script>
 </add-content>
