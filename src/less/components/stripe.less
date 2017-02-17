@@ -7,22 +7,11 @@ STRIPE COMPONENT
 * this value is substracted from the current breakpoint
 * @color: color
 ======================================== */
-
-.padding-vertical(@padding: 1em) {
-    padding-top: @padding;
-    padding-bottom: @padding;
-}
-
-.padding-horizontal(@padding: 1em) {
-    padding-left: @padding;
-    padding-right: @padding;
-}
-
-.stripe(@padding: medium, @width: medium, @color: @color-light) {
+.stripe(@padding: medium, @width: medium) {
     padding: 2em 0;
-    background-color: @color;
     width: 100%;
-    box-shadow: 0 .2em .2em @color-dark-shadow;
+    position: relative;
+    box-shadow: 0 .2em .2em fadeout(@color-dark-shadow, 35%);
     //border-bottom: .25em solid fadeout(@color-dark-shadow, 30%);
     .padding-vertical(@padding);
     & when (@padding = small) {
@@ -54,70 +43,40 @@ STRIPE COMPONENT
     @width-large: 10;
     & when (@width = small) {
         > * {
-            @media screen and (min-width: @breakpoint-sm) {
-                width: @breakpoint-sm - @width-small / 3;
-            }
-            @media screen and (min-width: @breakpoint-md) {
-                width: @breakpoint-md - @width-small / 2;
-            }
-            @media screen and (min-width: @breakpoint-lg) {
-                width: @breakpoint-lg - @width-small;
-            }
+            .responsiveWidth(.5);
         }
     }
     & when (@width = medium) {
         > * {
-            @media screen and (min-width: @breakpoint-sm) {
-                width: @breakpoint-sm - @width-medium / 3;
-            }
-            @media screen and (min-width: @breakpoint-md) {
-                width: @breakpoint-md - @width-medium / 2;
-            }
-            @media screen and (min-width: @breakpoint-lg) {
-                width: @breakpoint-lg - @width-medium;
-            }
+            .responsiveWidth(.7);
         }
     }
     & when (@width = large) {
         > * {
-            @media screen and (min-width: @breakpoint-sm) {
-                width: @breakpoint-sm - @width-large / 3;
-            }
-            @media screen and (min-width: @breakpoint-md) {
-                width: @breakpoint-md - @width-large / 2;
-            }
-            @media screen and (min-width: @breakpoint-lg) {
-                width: @breakpoint-lg - @width-large;
-            }
+            .responsiveWidth(.9);
         }
     }
     & when (@width = fluid) {
-        width: 100%;
+        > * {
+            width: 100%;
+        }
     }
     & when (isnumber(@width)) {
         > * {
-            @media screen and (min-width: @breakpoint-sm) {
-                width: @breakpoint-sm - @width / 3;
-            }
-            @media screen and (min-width: @breakpoint-md) {
-                width: @breakpoint-md - @width / 2;
-            }
-            @media screen and (min-width: @breakpoint-lg) {
-                width: @breakpoint-lg - @width;
-            }
+            .responsiveWidth(@width);
         }
     }
 }
 
 .stripe {
-    .stripe();
+    .stripe(large);
     &.primary {
         background-color: @color-primary;
-        color: @color-primary-dark;
+        color: @color-light;
     }
     &.secondary {
         background-color: @color-secondary;
-        color: @color-secondary-dark;
+        color: @color-light;
     }
     &.light {
         background-color: @color-light;
@@ -126,6 +85,18 @@ STRIPE COMPONENT
     &.dark {
         background-color: @color-dark;
         color: @color-light;
+    }
+    &.fluid {
+        .stripe(small, fluid);
+    }
+    &.small  > *{
+        .responsiveWidth(.5);
+    }
+    &.medium > * {
+        .responsiveWidth(.7);
+    }
+    &.large > * {
+        .responsiveWidth(.9);
     }
 }
 

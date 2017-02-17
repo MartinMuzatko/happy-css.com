@@ -1,41 +1,36 @@
-<header>
-    <div layout="row" layout-align="center center">
-        <div layout="row">
-            <img src="" alt="">
-            <h1>Happy-CSS</h1>
+<?php namespace ProcessWire; ?>
+<header class="stripe" style="background-image: url(<?=$page->backgroundimage->last->httpUrl?>)">
+    <div layout="column" layout-align="center center">
+        <div layout="row" layout-align="center center">
+            <img src="<?=$homepage->image->get('name%=light')->size(180,180)->httpUrl?>" alt="Logo" height="90" width="90">
+            <h1><?=$homepage->title?></h1>
         </div>
-        <p flex="100" class="description">Fighting the daily Front-end trouble with Martin Muzatko</p>
+        <p class="description"><?=$homepage->summary?></p>
     </div>
-    <nav layout="row" layout-align>
-        <?php $imgs=[4,70,20,25]; ?>
-        <? foreach ($page->children as $key => $child):?>
-
-            <article style="background-image: url(https://unsplash.it/800?image=<?=$imgs[$key]?>);background-size:cover;" flex="100" flex-gt-sm="50" flex-gt-md="<?=100 / $page->children->getTotal()?>">
-                <a layout="column" layout-align="center center" href="<?=$child->url?>">
-                    <h2><?=$child->title?></h2>
-                    <p><?=$child->summary?></p>
-                </a>
-            </article>
-        <? endforeach; ?>
-    </nav>
 </header>
+<nav layout="row" layout-align>
+    <? foreach ($page->children('template=page|overview') as $key => $child):?>
+        <article style="background-image: url(<?=$child->backgroundimage->first->size(700,400)->httpUrl?>); background-size:cover;" flex="100" flex-gt-sm="50" flex-gt-md="<?=100 / $page->children->getTotal()?>">
+            <a layout="column" layout-align="center center" href="<?=$child->url?>">
+                <h2><?=$child->title?></h2>
+                <p><?=$child->summary?></p>
+            </a>
+        </article>
+    <? endforeach; ?>
+</nav>
 <main>
-    <section class="stripe primary">
+    <? $contentPages = $pages->get('/home/')->children; ?>
+    <?php include('_content.php');?>
+    <section>
         <div>
-            Welcome to Happy-CSS!
+            <?php $author = $pages->get('/about/'); ?>
+            <h2><?=$author->title?></h2>
+            <p><?=$author->summary?></p>
+            <div class="avatar large">
+                <img src="<?=$author->image->first->httpUrl?>" alt="">
+                <?=$author->createdUser->username?>
+            </div>
+
         </div>
-    </section>
-    <section layout="row">
-        <? foreach($pages->find($page->selector) as $child): ?>
-            <article flex="100" flex-gt-sm="50" flex-gt-md="33">
-                <a href="<?=$child->url?>">
-                    <h2><?=$child->title?></h2>
-                    <img src="<?=$child->image->first()->url?>" alt="">
-                    <p><?=$child->summary?></p>
-                </a>
-            </article>
-        <? endforeach; ?>
     </section>
 </main>
-<footer></footer>
-<?php if($page->editable()) echo "<p><a href='$page->editURL'>Edit</a></p>"; ?>

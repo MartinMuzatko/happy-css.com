@@ -32,9 +32,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            riot: 'riot'
-        }),
         new ExtractTextPlugin("css/[name].css")
     ],
     devServer: {

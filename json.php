@@ -29,6 +29,7 @@ switch ($method) {
     case 'POST':
         $pageFields = json_decode(file_get_contents('php://input'));
 
+        
         // if page exists:
         // http_response_code(409); - conflict
 
@@ -87,7 +88,7 @@ switch ($method) {
         foreach ($page->fields as $field) {
             $json[$field->name] = [
                 'value' => htmlentities($page->{$field->name}),
-                'field' => json_decode(json_encode($page->{$field->name}))
+                'field' => (array) $page->{$field->name}
             ];
         }
         foreach ($additionalFields as $field => $value) {

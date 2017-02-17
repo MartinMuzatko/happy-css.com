@@ -1,9 +1,9 @@
 layout home:
     search (just the icon)
 
+    image
     sitename
     description
-    image
 
     nav
         articles

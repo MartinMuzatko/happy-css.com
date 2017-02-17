@@ -20,13 +20,17 @@ body {
     overflow-x: hidden;
 }
 
+
 input {
     font-family: @font-body;
 }
 
+iframe {
+    border: none;
+}
+
 h1, h2, h3, h4, h5, h6
 {
-    margin: 0;
     margin: 1em 0;
     line-height: 1.25em;
     text-transform: none;
@@ -51,6 +55,10 @@ h3 {
     font-size: 1.5em;
 }
 
+h2:first-child {
+    margin-top: 0;
+}
+
 h4 {
     font-size: 1rem;
 }
@@ -59,7 +67,7 @@ h4 {
     box-sizing: border-box;
 }
 
-img {
+main img {
     max-width: 100%;
     height: auto;
 }
@@ -86,24 +94,35 @@ code {
 }
 
 figure {
-    margin: 0;
-    img {
-        display: block;
-    }
-    figcaption {
-        margin: 0;
-        padding: .5em;
-        font-size: .85em;
-        font-family: Merriweather;
-    }
+	margin: 0;
+	img {
+		display: block;
+	}
+	figcaption {
+		margin: 0;
+		padding: .5em;
+		background: @color-primary;
+		color: @color-light;
+	}
 }
 
 a {
     text-decoration: none;
+    color: @color-primary;
 }
 
-pre {
-    padding: .5em;
+.code {
+    background: @color-dark;
+    border-radius: .2em .2em 0 0;
+    color: @color-light;
+    padding: .5em 0 .5em 1em;
+    + pre {
+        border-radius: 0 0 .2em .2em;
+    }
+}
+
+pre[class*=language-] {
+    margin: 0;
     margin: 0;
 
     code {
@@ -169,12 +188,9 @@ hr {
 
 p {
     padding: 0;
-    margin: 0;
+    margin: 1em 0;
     line-height: 1.5em;
     word-wrap: break-word;
-    + p {
-        margin-top: 1em;
-    }
 }
 
 ul {
@@ -207,4 +223,30 @@ fieldset
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+input {
+    width: auto;
+    border: 1px solid @color-primary;
+    border-radius: .2em;
+    font-size: 1em;
+    line-height: 1;
+    padding: .5em;
+    transition: all @duration-action ease;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin: 0;
+    ~ * {
+        margin-top: 1em;
+    }
+    input {
+        display: block;
+    }
+}
+
+input[type="submit"] {
+    margin-top: 1em;
 }

@@ -1,38 +1,76 @@
-header {
-    .stripe(medium, medium, @color-dark);
+body > header.stripe, main > header.stripe {
+    .stripe(8em, medium);
+    background-color: @color-dark;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     color: @color-light;
-    > div {
-        padding: 1em 0;
-    }
+    text-shadow: 0 1px 2px @color-dark-shadow, 0 1px 0 @color-dark-shadow;
     span {
         display: block;
     }
     .title {
-        font-size: 2em;
+        margin: 2em 0;
     }
 }
 
-main > section {
-    .stripe();
+.home header.stripe {
+    .darkenBackground();
 }
 
-header nav {
+[layout="row"] [flex-end] {
+    margin-left: auto;
+    margin-top: initial;
+    margin-bottom: initial;
+}
+
+.header.reduced {
+    padding: 0 1em;
+    a, nav a, .search {
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+    position: absolute;
+    z-index: @z-index-overlay;
+    background: @color-dark-shadow;
+    a {
+        color: @color-light;
+        text-shadow: 0 1px 2px @color-dark-shadow, 0 1px 0 @color-dark-shadow;
+        margin-right: 1em;
+    }
+}
+
+#moot-logo {
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden;
+    height: 0;
+}
+
+main > section {
+    .stripe(medium, medium);
+}
+
+article a {
+    display: block;
+    color: @color-dark;
+    .title {
+        h2 {
+            margin: 0;
+        }
+        margin-bottom: 1em;
+    }
+}
+
+nav {
     article {
         transition: all .5s ease;
-        position: relative;
+        .darkenBackground();
         &:hover {
             a {
                 transform: scale(1.1);
             }
-        }
-        &:before {
-            content: '';
-            position: absolute;
-            background-color: @color-dark-shadow;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
         }
         a {
             position: relative;
@@ -49,4 +87,83 @@ header nav {
         margin: 0;
         margin-bottom: 1em;
     }
+}
+
+// COMPONENTS
+
+.avatar {
+    margin-bottom: 1em;
+    color: @color-light;
+    img {
+        border-radius: 100%;
+        width: 5em;
+        height: 5em;
+        margin-right: 1em;
+    }
+    &.large img {
+        width: 10em;
+        height: 10em;
+    }
+}
+
+.tags > *
+{
+	color: @color-light;
+	background: lighten(@color-dark, 20%);
+	text-shadow: 0 1px 2px @color-dark-shadow, 0 1px 0 @color-dark-shadow;
+	display: inline-block;
+    margin: 0 .25em .5em 0;
+	border-radius: 0 .125em .125em 0;
+	padding: 0 .25em 0 .5em;
+	line-height: 1.5;
+	box-shadow: inset 0.25em 0 0 @color-dark-shadow;
+	small
+	{
+		font-size: .7em;
+	}
+}
+
+.progress {
+	background: fadeout(@color-dark, 40%);
+	height: .5em;
+	margin: .5em 0;
+	border-radius: .25em;
+	span
+	{
+		height: 100%;
+		display: block;
+		border-radius: .25em;
+	}
+}
+
+.card-overview {
+    margin-bottom: 2em;
+    h2,h3,h4 {
+        margin-top:0;
+    }
+    padding: 1em;
+    a {
+        display: block;
+        color: @color-light;
+    }
+}
+
+body > footer {
+    .stripe(4em, medium);
+    background-color: lighten(@color-dark, 10%);
+    text-transform: uppercase;
+    color: darken(@color-light, 10%);
+    font-size: .8em;
+    a {
+        color: @color-primary;
+    }
+    p {
+        margin: 0;
+        line-height: 1.5;
+    }
+}
+
+
+main {
+    .striped();
 }
