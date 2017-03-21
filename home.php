@@ -10,7 +10,12 @@
 </header>
 <nav layout="row" layout-align>
     <? foreach ($page->children('template=page|overview') as $key => $child):?>
-        <article style="background-image: url(<?=$child->backgroundimage->first->size(700,400)->httpUrl?>); background-size:cover;" flex="100" flex-gt-sm="50" flex-gt-md="<?=100 / $page->children->getTotal()?>">
+        <style>
+            #nav-<?=$child->name?>:hover::before {
+                background-color: <?=$child->color?>
+            }
+        </style>
+        <article id="nav-<?=$child->name?>" style="background-image: url(<?=$child->backgroundimage->first->size(700,400)->httpUrl?>); background-size:cover;" flex="100" flex-gt-sm="50" flex-gt-md="<?=100 / $page->children->getTotal()?>">
             <a layout="column" layout-align="center center" href="<?=$child->url?>">
                 <h2><?=$child->title?></h2>
                 <p><?=$child->summary?></p>
