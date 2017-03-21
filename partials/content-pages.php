@@ -1,7 +1,7 @@
 <?php namespace ProcessWire; ?>
-<div layout="row" layout-align="space-between">
+<div>
     <? foreach($pages->find($content->selector) as $subpage): ?>
-        <article flex="100" flex-gt-sm="45" flex-gt-md="30">
+        <article>
             <?=articlePreview($subpage)?>
         </article>
     <? endforeach; ?>

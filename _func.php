@@ -61,15 +61,15 @@ function articlePreview($page) {
 	?>
 		<div class="article-preview">
 			<a href="<?=$page->httpUrl?>">
+				<? if($page->image->first):?>
+					<img src="<?=$page->image->first->size(1920, 500)->httpUrl?>" alt="">
+				<? endif; ?>
 				<div class="title">
 					<h3><?=$page->title?></h3>
 					<small><time><?=date('jS \o\f F Y', $page->published)?></time></small>
 					<br><?=listingOfSeries($page)?>
+					<p><?=$page->summary?></p>
 				</div>
-				<? if($page->image->first):?>
-					<img src="<?=$page->image->first->httpUrl?>" alt="">
-				<? endif; ?>
-				<p><?=$page->summary?></p>
 			</a>
 			<p><?=tags($page)?></p>
 		</div>

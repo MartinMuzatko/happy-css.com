@@ -10,7 +10,7 @@
             <? endforeach; ?>
         </nav>
         <form action="<?=$pages->get('/search/')->httpUrl?>" class="search" flex-end>
-            <input type="text" name="q" size="10">
+            <input type="text" name="for" size="10" placeholder="Search topics">
         </form>
     </div>
 </header>

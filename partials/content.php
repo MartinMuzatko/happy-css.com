@@ -19,7 +19,7 @@
                     <?php
                         $flex = 'flex="100"';
                         if (count($content->textgrid) >= 2) {
-                            $flex = 'flex="100" flex-gt-sm="45"';
+                            $flex = 'flex="100" flex-gt-md="45"';
                         }
                     ?>
                     <div <?=$flex?>>

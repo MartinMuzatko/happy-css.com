@@ -1,13 +1,13 @@
 <?php namespace ProcessWire; ?>
 <?php
 
-$q = $sanitizer->text($input->get->q);
+$for = $sanitizer->text($input->get->for);
 
-if($q):
-    $input->whitelist('q', $q);
-    $q = $sanitizer->selectorValue($q);
+if($for):
+    $input->whitelist('for', $for);
+    $for = $sanitizer->selectorValue($for);
 
-    $selector = "tags|summary|text|code|textgrid.text%=$q, limit=50, template=page|content-text|content-code|content-cta|content-media";
+    $selector = "tags|summary|text|code|textgrid.text%=$for, limit=50, template=page|content-text|content-code|content-cta|content-media";
 
     if($user->isLoggedin()) $selector .= ", has_parent!=2";
 
