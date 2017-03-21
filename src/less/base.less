@@ -13,13 +13,32 @@ BASE
 /*  ========================================
 BLOCK ELEMENTS
 ======================================== */
-
-body {
+body, html
+{
+    background-color: @color-light;
+    min-width: 320px;
     font-family: @font-body;
-    line-height: 1.55;
-    overflow-x: hidden;
+    font-weight: 300;
+    line-height: 1.55rem;
+    color: @color-dark;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
+body {
+    font-size: 16px;
+    @media screen and (min-width: @breakpoint-sm) {
+        font-size: 16px;
+    }
+    @media screen and (min-width: @breakpoint-md) {
+        font-size: 17px;
+    }
+    @media screen and (min-width: @breakpoint-lg) {
+        font-size: 18px;
+    }
+}
 
 input {
     font-family: @font-body;
@@ -77,10 +96,10 @@ ul ul {
 }
 
 ul {
-    margin: 1em 0;
     padding: 0;
     li {
         list-style: none;
+        margin: 1em 0;
         &:before {
             padding-right: .5em;
             content: "❯";
@@ -89,8 +108,14 @@ ul {
     }
 }
 
-code {
+p code {
     color: @color-primary;
+    padding: 0.25em;
+    border-radius: .25em;
+    background-color: hsla(0, 0%, 70%, .1);
+    border: 1px solid hsla(0, 0%, 70%, .5);
+    padding: .1em .5em;
+    display: inline-block;
 }
 
 figure {
@@ -114,6 +139,7 @@ a {
 .code {
     background: @color-dark;
     border-radius: .2em .2em 0 0;
+    font-family: @font-heading;
     color: @color-light;
     padding: .5em 0 .5em 1em;
     + pre {
@@ -124,26 +150,12 @@ a {
 pre[class*=language-] {
     margin: 0;
     margin: 0;
+    font-size: 1rem;
 
     code {
         display: block;
         width: 100%;
     }
-}
-
-body, html
-{
-    background-color: @color-light;
-    min-width: 320px;
-    font-family: @font-body;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.5em; // 24px / 150%
-    color: @color-dark;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
 }
 
 table {
@@ -186,10 +198,11 @@ hr {
     background-color: lighten(@color-dark, 50%);
 }
 
-p {
+p, li {
+    font-size: 1.35rem;
     padding: 0;
     margin: 1em 0;
-    line-height: 1.5em;
+    line-height: 1.55;
     word-wrap: break-word;
 }
 

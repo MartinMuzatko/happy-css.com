@@ -27,7 +27,9 @@ MIXINS
     &::before {
         content: '';
         position: absolute;
-        background-color: @color-dark-shadow;
+        background-color: @color-dark;
+        opacity: .5;
+        transition: all .5s ease;
         width: 100%;
         height: 100%;
         left: 0;
