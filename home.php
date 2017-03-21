@@ -20,7 +20,7 @@
 </nav>
 <main>
     <? $contentPages = $pages->get('/home/')->children; ?>
-    <?php include('_content.php');?>
+    <?php include('partials/content.php');?>
     <section>
         <div>
             <?php $author = $pages->get('/about/'); ?>

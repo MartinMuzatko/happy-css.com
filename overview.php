@@ -1,5 +1,5 @@
 <?php namespace ProcessWire; ?>
-<?php include('_header.php');?>
+<?php include('partials/header.php');?>
 <main>
     <header
         style="background-image: url(<?=$page->backgroundimage->first->httpUrl?>);"
