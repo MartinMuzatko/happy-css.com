@@ -28,12 +28,17 @@
     <?php include('partials/content.php');?>
     <section>
         <div>
-            <?php $author = $pages->get('/about/'); ?>
-            <h2><?=$author->title?></h2>
-            <p><?=$author->summary?></p>
-            <div class="avatar large">
-                <img src="<?=$author->image->first->httpUrl?>" alt="">
-                <?=$author->createdUser->username?>
+            <?php $about = $pages->get('/about/'); ?>
+            <h3><?=$about->title?></h3>
+            <div layout="row" layout-align="space-between">
+                <div flex="100" flex-gt-md="25" class="avatar large">
+                    <img src="<?=$about->image->first->httpUrl?>" alt="">
+                    <br><?=$author->username?>
+                </div>
+                <p flex="100" flex-gt-md="75">
+                    <?=$about->summary?>
+                </p>
+                <a href="<?=$about->httpUrl?>" class="button">Get to know the author</a>
             </div>
 
         </div>
