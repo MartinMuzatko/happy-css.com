@@ -12,7 +12,7 @@ if (array_key_exists('json', $_GET)) {
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?=$page->title?> | Happy-CSS</title>
+    <title><?=$page->title?> | <?=$homepage->title?> - <?=$homepage->summary?></title>
     <meta name="description" content="<?=$page->summary?>" />
 
     <!-- Schema.org markup for Google+ -->
@@ -22,10 +22,10 @@ if (array_key_exists('json', $_GET)) {
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@<?=$homepage->twitterHandle?>">
+    <meta name="twitter:site" content="@<?=$author->twitterHandle?>">
     <meta name="twitter:title" content="<?=$page->title?>">
     <meta name="twitter:description" content="<?=$page->summary?>">
-    <meta name="twitter:creator" content="@<?=$homepage->twitterHandle?>">
+    <meta name="twitter:creator" content="@<?=$author->twitterHandle?>">
     <!-- Twitter Summary card images must be at least 120x120px -->
     <meta name="twitter:image" content="<?=$page->image->first->httpUrl?>">
 
@@ -35,7 +35,8 @@ if (array_key_exists('json', $_GET)) {
     <meta property="og:url" content="<?=$page->httpUrl?>" />
     <meta property="og:image" content="http://example.com/image.jpg" />
     <meta property="og:description" content="<?=$page->summary?>" />
-    <meta property="og:site_name" content="<?=$homepage->title?>" />
+    <meta property="og:site_name" content="<?=$homepage->title?> - <?=$homepage->summary?>" />
+    <meta property="og:locale" content="en_US" />
     <meta property="article:published_time" content="<?=date('c', $page->published)?>" />
     <meta property="article:modified_time" content="<?=date('c', $page->modifed)?>" />
 
