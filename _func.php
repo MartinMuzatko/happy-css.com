@@ -35,13 +35,15 @@ function tags($page) {
 	return ob_get_clean();
 }
 
-function listingOfSeries($page, $hideLinkToParent = true) {
+function listingOfSeries($page, $hideLinkToParent = true, $hideOverviewItem = false) {
 
 	$listingText = '';
 
 	// is Parent Overview
 	if ($page->parent->template->name == 'overview') {
-		$listingText = $page->parent->contenttypesingular;
+        if (!$hideOverviewItem) {
+            $listingText = $page->parent->contenttypesingular;
+        }
 
 		// is Content Type Series
 		if ($page->parent->contenttype->title == 'series') {

@@ -1,3 +1,5 @@
+Share Buttons!!!
+
 layout home:
     search (just the icon)
 
@@ -49,3 +51,13 @@ layout overview:
                     summary
                     image
                     read time
+
+content-cta
+    title
+    text
+    button
+        type
+            full
+            reverse
+            outline
+    form

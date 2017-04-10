@@ -1,6 +1,6 @@
 <?php namespace ProcessWire;
 $content = ob_get_clean();
-if (array_key_exists('json', $_GET)) {
+if ($input->get->json) {
     include('json.php');
     die;
 }
@@ -91,6 +91,6 @@ if (array_key_exists('json', $_GET)) {
             ga('send', 'pageview');
         </script>
     <? endif; ?>
-    <script src="<?=$config->urls->templates?>js/main.js"></script>
+    <script src="<?=$config->urls->templates?>main.js"></script>
 </body>
 </html>

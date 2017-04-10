@@ -29,7 +29,7 @@ switch ($method) {
     case 'POST':
         $pageFields = json_decode(file_get_contents('php://input'));
 
-        
+
         // if page exists:
         // http_response_code(409); - conflict
 
@@ -54,14 +54,17 @@ switch ($method) {
     case 'PUT':
         if($user->hasPermission('page-edit', $page)) {
             $pageFields = json_decode(file_get_contents('php://input'));
-            foreach ($pageFields as $field => $value) {
-                echo $field . " " . $value;
-                $page->$field = $value;
-                //$json[$field] = [$page->${field}];
-
-            }
-            $page->setOutputFormatting(false);
+            $page->of(false);
+            // foreach ($pageFields as $field => $value) {
+            //     echo $field . " " . $value."\n";
+            //     $page->$field = $value;
+            //     //$json[$field] = [$page->${field}];
+            //
+            // }
+            $page->set('published','1486297829');
+            $page->published = '1486297829';
             $page->save();
+            die;
 
             $json = ['message'=>'RESOURCE UPDATED'];
             http_response_code(201);

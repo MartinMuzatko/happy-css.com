@@ -1,8 +1,9 @@
 <?php namespace ProcessWire; ?>
-<?php include('_header.php');?>
+<?php include('partials/header.php');?>
 <main>
     <?php
-        $backgroundimage = $page->image->first ? "background-image: url({$page->image->first->httpUrl});" : '';
+        $backgroundimage = $page->get('backgroundimage|image');
+        $backgroundimage = $backgroundimage->first ? "background-image: url({$backgroundimage->first->httpUrl});" : '';
     ?>
     <header
     style="<?=$backgroundimage?>"
@@ -11,17 +12,20 @@
         <div>
             <div class="title">
                 <h1><?=$page->title?></h1>
+                <?=listingOfSeries($page, false, true)?>
+
                 <p class="description"><?=$page->summary?></p>
             </div>
             <? if(!$page->hideauthor):?>
                 <div layout="row">
-                    <a class="avatar" href="<?=$pages->get("title=about")->httpUrl ?>" layout="row" layout-align="start center">
+                    <div class="avatar" layout="row" layout-align="start center">
                         <img src="<?=$page->createdUser->image->first->httpUrl?>" alt="<?=$page->createdUser->username?>">
                         <span>
-                            Written by <strong><?=$page->createdUser->username?></strong> <br>
-                            on <time><?=date('jS \o\f F Y', $page->published)?></time>
+                            Written by <a href="<?=$pages->get("title=about")->httpUrl ?>"><strong><?=$page->createdUser->username?></strong></a>
+                            <br>on <time><?=date('jS \o\f F Y', $page->published)?></time>
+                            <br><img src="https://img.shields.io/twitter/follow/martinmuzatko.svg?style=social&label=Follow%20@martinmuzatko" alt="">
                         </span>
-                    </a>
+                    </div>
                 </div>
             <? endif;?>
             <p>
@@ -29,31 +33,61 @@
             </p>
         </div>
     </header>
+    <? if($page->parent->contenttype->title == 'series'): ?>
+    <div>
+        <h2>Overview</h2>
+        <? foreach($page->siblings as $index => $sibling ):?>
+            <h3><?=$index+1?>. <?=$sibling->title?></h3>
+            <? foreach($sibling->children as $index => $child ):?>
+                <? if (!$child->hidetitle): ?>
+                    <h4><?=$child->title?></h4>
+                <? endif; ?>
+            <? endforeach;?>
+        <? endforeach;?>
+    </div>
+    <? endif; ?>
     <? $contentPages = $page->children; ?>
-    <?php include('_content.php');?>
+    <?php include('partials/content.php');?>
     <? if($page->parent->template->name == 'overview'): ?>
-        <section>
-            <div layout="row" layout-align="space-between">
-                <? if(!$page->prev instanceof NullPage):?>
-                    <div flex-start flex="100" flex-gt-sm="45" order-sm="1">
-                        Previous <?=$page->parent->contenttypesingular?>
+        <? if($page->parent->contenttype->title == 'series'): ?>
+            <section class="stripe fluid">
+                <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
+                    <? if(!$page->prev instanceof NullPage):?>
+                        <div flex-start flex="100" flex-gt-sm="45" flex-order-sm="1">
+                            Previous <?=$page->parent->contenttypesingular?>
+                            <?=articlePreview($page->prev)?>
+                        </div>
+                    <? endif;?>
+                    <? if(!$page->next instanceof NullPage):?>
+                        <div style="text-align:right;" flex-end flex="100" flex-gt-sm="45" flex-order-sm="0">
+                            Next <?=$page->parent->contenttypesingular?>
+                            <?=articlePreview($page->next)?>
+                        </div>
+                    <? endif;?>
+
+                </div>
+                <div layout="row" layout-align="center center">
+                    <a href="<?=$page->parent->httpUrl?>" class="button primary">
+                        See all <?=$page->parent->contenttypeplural?>
+                    </a>
+                </div>
+            </section>
+        <? elseif($page->parent->contenttype->title == 'list'):?>
+            <section class="stripe">
+                <h2>See other <?=$page->parent->contenttypeplural?></h2>
+                <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
+                    <div flex-start flex="100" flex-gt-sm="45">
+                        <?=$page->parent->contenttypesingular?>
                         <?=articlePreview($page->prev)?>
                     </div>
-                <? endif;?>
-                <? if(!$page->next instanceof NullPage):?>
-                    <div style="text-align:right;" flex-end flex="100" flex-gt-sm="45" order-sm="0">
-                        Next <?=$page->parent->contenttypesingular?>
-                        <?=articlePreview($page->next)?>
-                    </div>
-                <? endif;?>
-
-            </div>
-            <div layout="row" layout-align="center center">
-                <a href="" class="button primary">
-                    See all <?=$page->parent->contenttypeplural?>
-                </a>
-            </div>
-        </section>
+                </div>
+                <div layout="row" layout-align="center center">
+                    <a href="<?=$page->parent->httpUrl?>" class="button primary">
+                        See all <?=$page->parent->contenttypeplural?>
+                    </a>
+                </div>
+            </section>
+        <? endif;?>
     <? endif;?>
 </main>
 <? if(!$page->hidecomments):?>
