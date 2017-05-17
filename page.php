@@ -33,7 +33,7 @@
             </p>
         </div>
     </header>
-    <? if($page->parent->contenttype->title == 'series'): ?>
+    <? if($page->parent->template->title == 'overview' && $page->parent->contenttype->title == 'series'): ?>
     <div>
         <h2>Overview</h2>
         <? foreach($page->siblings as $index => $sibling ):?>
@@ -72,12 +72,11 @@
                     </a>
                 </div>
             </section>
-        <? elseif($page->parent->contenttype->title == 'list'):?>
+        <? elseif($page->parent->contenttype->title == 'list' && $page->siblings->getTotal() > 1):?>
             <section class="stripe">
                 <h2>See other <?=$page->parent->contenttypeplural?></h2>
                 <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
                     <div flex-start flex="100" flex-gt-sm="45">
-                        <?=$page->parent->contenttypesingular?>
                         <?=articlePreview($page->prev)?>
                     </div>
                 </div>

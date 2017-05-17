@@ -40,7 +40,7 @@ function listingOfSeries($page, $hideLinkToParent = true, $hideOverviewItem = fa
 	$listingText = '';
 
 	// is Parent Overview
-	if ($page->parent->template->name == 'overview') {
+	if ($page->parent->template && $page->parent->template->name == 'overview') {
         if (!$hideOverviewItem) {
             $listingText = $page->parent->contenttypesingular;
         }
