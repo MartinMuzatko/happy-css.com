@@ -22,10 +22,15 @@ form.search input {
     color: @color-light;
 }
 
-.home header.stripe, .page main header.stripe {
+.page main header.stripe {
     padding-top: 7em;
     padding-bottom: 8em;
     //.darkenBackground();
+}
+
+.home header.stripe {
+    padding-top: 3em;
+    padding-bottom: 3em;
 }
 
 body > footer p {
@@ -50,8 +55,10 @@ a article {
 .header.reduced {
     padding: 0 1em;
     a, nav a, .search {
-        padding-top: .5em;
-        padding-bottom: .5em;
+        padding: .5em;
+        display: flex;
+        align-items: center;
+        transition: all .25s ease;
     }
     position: absolute;
     z-index: @z-index-overlay;
