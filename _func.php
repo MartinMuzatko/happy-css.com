@@ -63,7 +63,7 @@ function articlePreview($page) {
 	?>
 		<div class="article-preview">
 			<a href="<?=$page->httpUrl?>">
-				<? if($page->image->first):?>
+				<? if($page->image && $page->image->first):?>
 					<img src="<?=$page->image->first->size(1920, 500)->httpUrl?>" alt="">
 				<? endif; ?>
 				<div class="title">
