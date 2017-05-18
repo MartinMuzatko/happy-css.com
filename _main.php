@@ -65,7 +65,7 @@ if ($input->get->json) {
 		}(document, "script", "twitter-wjs"));
 	</script>
     <?=$content?>
-    <footer>
+    <footer class="site__footer">
         <div>
             <p>
                 &copy; <?=date('Y')?> by <a href="https://twitter.com/martinmuzatko">Martin Muzatko</a> - fighting the daily Frontend problems
@@ -91,6 +91,7 @@ if ($input->get->json) {
             ga('send', 'pageview');
         </script>
     <? endif; ?>
+    <script src="<?=$config->urls->templates?>vendor.js"></script>
     <script src="<?=$config->urls->templates?>main.js"></script>
 </body>
 </html>

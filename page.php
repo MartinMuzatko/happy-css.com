@@ -1,13 +1,13 @@
 <?php namespace ProcessWire; ?>
 <?php include('partials/header.php');?>
-<main>
+<main class="site__content">
     <?php
         $backgroundimage = $page->get('backgroundimage|image');
         $backgroundimage = $backgroundimage->first ? "background-image: url({$backgroundimage->first->httpUrl});" : '';
     ?>
     <header
     style="<?=$backgroundimage?>"
-    class="stripe <?=$page->backgroundcolor->title?>">
+    class="banner stripe <?=$page->backgroundcolor->title?>">
         <?=editButton($page)?>
         <div>
             <div class="title">
@@ -50,7 +50,7 @@
     <?php include('partials/content.php');?>
     <? if($page->parent->template->name == 'overview'): ?>
         <? if($page->parent->contenttype->title == 'series'): ?>
-            <section class="stripe fluid">
+            <section class="stripe stripe--fluid">
                 <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
                     <? if(!$page->prev instanceof NullPage):?>
                         <div flex-start flex="100" flex-gt-sm="45" flex-order-sm="1">
@@ -90,7 +90,7 @@
     <? endif;?>
 </main>
 <? if(!$page->hidecomments):?>
-    <aside class="stripe light">
+    <aside class="stripe stripe--light">
         <div>
             <h2>Comments</h2>
             <p>Is there a question burning in your mind? Go ahead and share your thoughts with me.</p>

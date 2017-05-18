@@ -7,7 +7,7 @@ STRIPE COMPONENT
 * this value is substracted from the current breakpoint
 * @color: color
 ======================================== */
-.stripe(@padding: medium, @width: medium) {
+.c-stripe(@padding: medium, @width: medium) {
     padding: 2em 0;
     width: 100%;
     position: relative;
@@ -69,33 +69,33 @@ STRIPE COMPONENT
 }
 
 .stripe {
-    .stripe(large);
-    &.primary {
+    .c-stripe(large);
+    &--primary {
         background-color: @color-primary;
         color: @color-light;
     }
-    &.secondary {
+    &--secondary {
         background-color: @color-secondary;
         color: @color-light;
     }
-    &.light {
+    &--light {
         background-color: @color-light;
         color: @color-dark;
     }
-    &.dark {
+    &--dark {
         background-color: @color-dark;
         color: @color-light;
     }
-    &.fluid {
-        .stripe(small, fluid);
+    &--fluid {
+        .c-stripe(small, fluid);
     }
-    &.small  > *{
+    &--small  > *{
         .responsiveWidth(.5);
     }
-    &.medium > * {
+    &--medium > * {
         .responsiveWidth(.7);
     }
-    &.large > * {
+    &--large > * {
         .responsiveWidth(.9);
     }
 }

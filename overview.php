@@ -1,9 +1,9 @@
 <?php namespace ProcessWire; ?>
 <?php include('partials/header.php');?>
-<main>
+<main class="site__content">
     <header
         style="background-image: url(<?=$page->backgroundimage->first->httpUrl?>);"
-        class="stripe <?=$page->backgroundcolor->title?>">
+        class="banner stripe stripe--<?=$page->backgroundcolor->title?>">
         <?=editButton($page)?>
         <div>
             <div class="title">
@@ -76,7 +76,7 @@
 
         <!-- JUST PAGES -->
         <? if($page->children->count == $page->children('template=page')->count):?>
-			<section class="stripe small">
+			<section class="stripe stripe--small">
 				<div>
                     <? foreach($page->children as $child): ?>
                         <article>

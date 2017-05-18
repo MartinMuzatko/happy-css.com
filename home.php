@@ -1,14 +1,14 @@
 <?php namespace ProcessWire; ?>
-<header class="stripe" style="background-image: url(<?=$page->backgroundimage->last->httpUrl?>)">
+<header class="stripe header header--extended" style="background-image: url(<?=$page->backgroundimage->last->httpUrl?>)">
     <div layout="column" layout-align="center center">
         <div layout="row" layout-align="center center">
-            <img src="<?=$homepage->image->get('name%=light')->size(180,180)->httpUrl?>" alt="Logo" height="90" width="90">
+            <img class="site__logo" src="<?=$homepage->image->get('name%=light')->size(180,180)->httpUrl?>" alt="Logo" height="90" width="90">
             <h1><?=$homepage->title?></h1>
         </div>
         <p class="description"><?=$homepage->summary?></p>
     </div>
 </header>
-<nav layout="row" layout-align>
+<nav class="site__nav" layout="row" layout-align>
     <? foreach ($page->children('template=page|overview') as $key => $child):?>
         <style>
             #nav-<?=$child->name?>:hover::before {
@@ -23,7 +23,7 @@
         </article>
     <? endforeach; ?>
 </nav>
-<main>
+<main class="site__content">
     <? $contentPages = $pages->get('/home/')->children; ?>
     <?php include('partials/content.php');?>
     <section>

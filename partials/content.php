@@ -7,7 +7,7 @@
     ?>
     <section
         id="<?= strtolower(str_replace(' ', '', $content->title))?>"
-        class="stripe <?=$content->backgroundcolor->title?> <?=$content->stripewidth->title?> <?=$content->template->name?>">
+        class="stripe stripe--<?=$content->backgroundcolor->title?> <?=$content->stripewidth->title?> <?=$content->template->name?>">
 
         <?=editButton($content)?>
         <div>
