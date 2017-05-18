@@ -7,10 +7,10 @@ var path = require('path');
 
 module.exports = {
 
-    entry: "./src/index.js", // string | object | array
-    // Here the application starts executing
-    // and webpack starts bundling
-
+    entry: {
+        'main' : './src/main.js',
+        'vendor' : './src/vendor.js'
+    },
     output: {
         path: path.resolve(__dirname, ''), // string
         filename: "[name].js", // string
