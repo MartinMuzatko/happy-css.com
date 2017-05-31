@@ -1,5 +1,8 @@
-node_modules
+qnode_modules
 .DS_Store
 .ftpconfig
-js/*
-css/main.css
+/*.js
+*.map
+css
+
+node_modules
