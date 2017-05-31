@@ -7,23 +7,29 @@ if($for):
     $input->whitelist('for', $for);
     $for = $sanitizer->selectorValue($for);
 
-    $selector = "tags|summary|text|code|textgrid.text%=$for, limit=50, template=page|content-text|content-code|content-cta|content-media";
+    $selector = "title|summary|codegrid.code|name|tags|summary|text|code|textgrid.text*=$for, limit=30, template=page|content-text|content-code|content-cta|content-media|overview";
 
     if($user->isLoggedin()) $selector .= ", has_parent!=2";
 
     // Find pages that match the selector
-    $matches = $pages->find($selector);
+    $matches = $pages->find($selector)->not($homepage);
     // did we find any matches?
     if($matches->count):
+    $filteredMatches = [];
+    foreach ($matches as $match) {
+        if(!in_array($match->template->title, ['content-cta', 'content-code', 'content-media', 'content-text'])) {
+            $match = $match->parent;
+        }
+        array_push($filteredMatches, (string) $match);
+    }
+    $matches = array_unique($filteredMatches);
 ?>
-        <span>
-            Found <?=$matches->count?> Pages
-        </span>
+        <h3>
+            Found <?=count($matches)?> article<?=count($matches) > 1 ? 's' : ''?> for <strong><?=$for?></strong>.
+        </h3>
         <?php foreach ($matches as $match): ?>
             <?php
-                if(!in_array($match->template->title, ['content-cta', 'content-code', 'content-media', 'content-text', ])) {
-                    $match = $match->parent;
-                }
+                $match = $pages->get($match);
             ?>
             <article flex="100" flex-gt-sm="45" flex-gt-md="30">
                 <?=articlePreview($match)?>
