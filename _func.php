@@ -12,6 +12,9 @@ function editButton($page) {
 }
 
 function tags($page) {
+    if (!$page->tags) {
+        return false;
+    }
 	$tags = $page->tags;
 	ob_start();
 	?>
