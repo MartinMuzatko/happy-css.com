@@ -8,7 +8,7 @@
         <p class="description"><?=$homepage->summary?></p>
     </div>
 </header>
-<nav class="site__nav" layout="row" layout-align>
+<nav class="site__nav site__nav--big" layout="row" layout-align>
     <? foreach ($page->children('template=page|overview') as $key => $child):?>
         <style>
             #nav-<?=$child->name?>:hover::before {
