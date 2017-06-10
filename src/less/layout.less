@@ -112,6 +112,7 @@ article a {
 }
 
 .site__nav {
+
     article {
         transition: all .5s ease;
         .darkenBackground();
@@ -170,7 +171,7 @@ article a {
 
 .avatar {
     margin-bottom: 1em;
-    color: @color-light;
+    // color: @color-light;
     > img:first-of-type {
         border-radius: 100%;
         width: 5em;
@@ -266,13 +267,13 @@ main {
             background-color: lighten(@color-dark, 30%);
         }
     }
-    img {
+    &__teaserimage {
         position: relative;
         left: -.75em;
         width: calc(~"100% + 1.5em");
         bottom: .25em;
         max-width: none;
-        border-bottom: .2em solid @color-dark;
+        // border-bottom: .2em solid @color-dark;
     }
 }
 
