@@ -1,0 +1,40 @@
+<code-preview>
+    <div class="code-result">
+        <div class="code-result__title" layout="row" layout-align="space-between">
+            <div>{codeVisible ? 'Code' : 'Result'}</div>
+            <small onclick={toggleVisibility}>See {!codeVisible ? 'code' : 'result'}</small>
+        </div>
+        <div ref="preview" show={!codeVisible} class="code-result__preview">
+        </div>
+        <div show={codeVisible} class="code-result__preview">
+            <pre class="language-{opts.language}"><code class="language-{opts.language}" ref="code"><yield from="code" /></code></pre>
+        </div>
+    </div>
+    <style>
+        small {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        import Prism from '../vendor/prism'
+
+        this.codeVisible = false
+        this.code = ''
+
+        toggleVisibility() {
+            this.codeVisible = !this.codeVisible
+        }
+
+        this.on('mount', ()=>{
+            this.code = document.querySelector(`#${this.opts.previewId}`)
+            this.refs.preview.appendChild(this.code)
+            this.code.removeAttribute('hidden')
+        })
+
+        this.on('updated', ()=>{
+            if (this.codeVisible && Prism.languages[this.opts.language]) {
+                this.refs.code.innerHTML = Prism.highlight(this.refs.code.innerText, Prism.languages[this.opts.language])
+            }
+        })
+    </script>
+</code-preview>
