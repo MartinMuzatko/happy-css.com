@@ -74,16 +74,20 @@
             </section>
         <? elseif($page->parent->contenttype->title == 'list' && $page->siblings->getTotal() > 1):?>
             <section class="stripe">
-                <h2>See other <?=$page->parent->contenttypeplural?></h2>
-                <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
-                    <div flex-start flex="100" flex-gt-sm="45">
-                        <?=articlePreview($page->prev)?>
+                <div>
+                    <h2>See other <?=strtolower($page->parent->contenttypeplural)?></h2>
+                    <div layout="row" layout-align="space-between">
+                        <? foreach($page->siblings->not($page)->filter('limit=4') as $sibling): ?>
+                            <div flex-start flex="100" flex-gt-sm="45">
+                                <?=articlePreview($sibling)?>
+                            </div>
+                        <? endforeach; ?>
                     </div>
-                </div>
-                <div layout="row" layout-align="center center">
-                    <a href="<?=$page->parent->httpUrl?>" class="button primary">
-                        See all <?=$page->parent->contenttypeplural?>
-                    </a>
+                    <div layout="row" layout-align="center center">
+                        <a href="<?=$page->parent->httpUrl?>" class="button primary">
+                            See all <?=$page->parent->contenttypeplural?>
+                        </a>
+                    </div>
                 </div>
             </section>
         <? endif;?>
