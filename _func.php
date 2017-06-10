@@ -59,12 +59,17 @@ function listingOfSeries($page, $hideLinkToParent = true, $hideOverviewItem = fa
 }
 
 function articlePreview($page) {
-	ob_start();
+    if ($page instanceof NullPage) {
+        return false;
+    }
+    ob_start();
 	?>
 		<div class="article-preview">
 			<a href="<?=$page->httpUrl?>">
 				<? if($page->image && $page->image->first):?>
-					<img src="<?=$page->image->first->size(1920, 500)->httpUrl?>" alt="">
+					<img class="article-preview__teaserimage" src="<?=$page->image->first->size(1920, 500)->httpUrl?>" alt="<?=$page->title?>">
+                <? elseif($page->backgroundcolor && $page->backgroundcolor->title != 'light' && $page->backgroundcolor->title): ?>
+                    <div style="padding: 3em;" class="article-preview__teaserimage stripe--<?=$page->backgroundcolor->title?>"></div>
 				<? endif; ?>
 				<div class="title">
 					<h3><?=$page->title?></h3>
