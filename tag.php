@@ -2,7 +2,7 @@
 <?php include('partials/header.php');?>
 <main class="site__content">
     <header
-        class="banner stripe stripe--primary">
+        class="stripe stripe--primary">
         <?=editButton($page)?>
         <div>
             <div class="title">
