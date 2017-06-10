@@ -1,9 +1,19 @@
 <?php namespace ProcessWire;
 $content = ob_get_clean();
-if ($input->get->json) {
-    include('json.php');
-    die;
+if ($input->post->action == 'subscribe') {
+    $groupsApi = (new \MailerLiteApi\MailerLite($config->mailerLiteApiKey))->groups();
+
+    $subscriber = [
+        'email' => $sanitizer->email($input->post->email),
+        'fields' => [
+            'name' => $input->post->name
+        ]
+    ];
+
+    $response = $groupsApi->addSubscriber((int) $input->post->groupid, $subscriber);
 }
+
+$htmlTitle = $page->title == $homepage->title ? $page->title : "$page->title | $homepage->title";
 ?>
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/Article">
@@ -87,7 +97,7 @@ if ($input->get->json) {
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-            ga('create', 'UA-52989130-5', 'auto');
+            ga('create', '<?=$config->googleAnalyticsId?>', 'auto');
             ga('send', 'pageview');
         </script>
     <? endif; ?>
