@@ -85,7 +85,7 @@ $htmlTitle = $page->title == $homepage->title ? $page->title : "$page->title | $
             </p>
             <p>
                 Powered by
-                <a href="http://processwire.com/">ProcessWire</a> and
+                <a href="http://processwire.com/">ProcessWire</a>, <a href="http://riotjs.com/">RiotJS</a> and
                 <a href="http://martinmuzatko.github.io/flexproperties/">FlexProperties</a>
             </p>
         </div>
