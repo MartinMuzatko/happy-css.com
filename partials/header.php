@@ -14,8 +14,8 @@
                 <a class="<?= $child->id == $page->rootParent->id ? 'active' : ''?>" id="nav-<?=$child->name?>" href="<?=$child->url?>"><?=$child->title?></a>
             <? endforeach; ?>
         </nav>
-        <form action="<?=$pages->get('/search/')->httpUrl?>" class="search" flex-end>
-            <input type="text" name="for" size="10" placeholder="Search topics">
+        <form action="<?=$pages->get('/search/')->httpUrl?>" class="search" flex-end layout="row" layout-align="center center">
+            <input type="text" name="for" size="20" placeholder="Search topics" value="<?=$input->get->for?>">
         </form>
     </div>
 </header>
