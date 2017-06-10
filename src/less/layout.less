@@ -300,3 +300,22 @@ main {
 	position: relative;
 	top: 0.5em;
 }
+
+.code-result {
+    margin-top: 2em;
+    border: 1px solid @color-dark;
+    border-top-width: 0;
+    border-radius: .25em;
+    &__title {
+        // display: block;
+        text-transform: uppercase;
+        font-family: @font-heading;
+        padding: .5em 1em;
+        background-color: @color-dark;
+        color: @color-light;
+    }
+    &__preview {
+        display: block;
+        padding: 1em;
+    }
+}
