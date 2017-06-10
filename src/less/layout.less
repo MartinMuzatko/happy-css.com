@@ -231,18 +231,13 @@ main {
 }
 
 .site__logo--reduced {
-    margin-right: 1em;
-}
-
-.site__logo {
-    &:hover {
-        animation: flip .5s linear 0 alternate both;
+    @media screen and (min-width: @breakpoint-sm) {
+        margin-right: 1em;
     }
 }
 
-@keyframes flip {
-    from {transform: rotateX(0deg);}
-    to {transform: rotateX(180deg);}
+.site__logo {
+    text-align: center;
 }
 
 .article-preview {
