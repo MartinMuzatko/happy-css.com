@@ -11,41 +11,41 @@ if ($input->get->json) {
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title><?=$page->title?> | <?=$homepage->title?> - <?=$homepage->summary?></title>
+    <title><?=$htmlTitle?> - <?=$homepage->summary?></title>
     <meta name="description" content="<?=$page->summary?>" />
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="<?=$page->title?>">
+    <meta itemprop="name" content="<?=$htmlTitle?>">
     <meta itemprop="description" content="<?=$page->summary?>">
-    <meta itemprop="image" content="http://www.example.com/image.jpg">
+    <meta itemprop="image" content="<?=$coverImage?>">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@<?=$author->twitterHandle?>">
-    <meta name="twitter:title" content="<?=$page->title?>">
+    <meta name="twitter:title" content="<?=$htmlTitle?>">
     <meta name="twitter:description" content="<?=$page->summary?>">
     <meta name="twitter:creator" content="@<?=$author->twitterHandle?>">
     <!-- Twitter Summary card images must be at least 120x120px -->
-    <meta name="twitter:image" content="<?=$page->image->first->httpUrl?>">
+    <meta name="twitter:image" content="<?=$coverImage?>">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="<?=$page->title?>" />
+    <meta property="og:title" content="<?=$htmlTitle?>" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="<?=$page->httpUrl?>" />
-    <meta property="og:image" content="http://example.com/image.jpg" />
+    <meta property="og:image" content="<?=$coverImage?>" />
     <meta property="og:description" content="<?=$page->summary?>" />
     <meta property="og:site_name" content="<?=$homepage->title?> - <?=$homepage->summary?>" />
     <meta property="og:locale" content="en_US" />
     <meta property="article:published_time" content="<?=date('c', $page->published)?>" />
     <meta property="article:modified_time" content="<?=date('c', $page->modifed)?>" />
 
+    <link rel="stylesheet" type="text/css" href="<?=$config->urls->templates?>css/vendor.css" />
     <link rel="stylesheet" type="text/css" href="<?=$config->urls->templates?>css/main.css" />
 
     <!-- FavIcons -->
     <link rel="icon" type="image/png" href="<?=$homepage->image->get('name%=dark')->size(128,128)->httpUrl?>" />
 </head>
-<body class="<?=$page->template->name?>">
+<body class="template__<?=$page->template->name?>">
     <script>
 		window.twttr = (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0],
