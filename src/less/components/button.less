@@ -9,6 +9,7 @@ BUTTON COMPONENT
 
 .button(@color: @color-primary, @type: full) {
     border: none;
+    white-space: normal;
     & when (@type = outline) {
         background-color: transparent;
         color: @color-light;
@@ -61,10 +62,10 @@ p + .button {
         border-radius: 100%;
     }
     &.outline {
-        .button(@color-primary, @type: outline);
+        .button(@color-primary, outline);
     }
     &.reverse {
-        .button(@color-primary, @type: outline-reverse);
+        .button(@color-primary, reverse);
     }
     &.secondary {
         .button(@color-secondary, full);
