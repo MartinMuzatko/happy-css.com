@@ -3,7 +3,7 @@
 <main class="site__content">
     <header
         style="background-image: url(<?=$page->backgroundimage->first->httpUrl?>);"
-        class="banner stripe stripe--<?=$page->backgroundcolor->title?>">
+        class="stripe stripe--<?=$page->backgroundcolor->title?>">
         <?=editButton($page)?>
         <div>
             <div class="title">

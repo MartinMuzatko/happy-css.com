@@ -7,7 +7,7 @@
     ?>
     <header
     style="<?=$backgroundimage?>"
-    class="banner stripe <?=$page->backgroundcolor->title?>">
+    class="stripe stripe--<?=$page->backgroundcolor->title?>">
         <?=editButton($page)?>
         <div>
             <div class="title">
@@ -51,7 +51,7 @@
     <? if($page->parent->template->name == 'overview'): ?>
         <? if($page->parent->contenttype->title == 'series'): ?>
             <section class="stripe stripe--fluid">
-                <div layout="row" style="padding-left: 1em; padding-right: 1em;" layout-align="space-between">
+                <div layout="row" layout-align="space-between">
                     <? if(!$page->prev instanceof NullPage):?>
                         <div flex-start flex="100" flex-gt-sm="45" flex-order-sm="1">
                             Previous <?=$page->parent->contenttypesingular?>

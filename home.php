@@ -33,7 +33,6 @@
             <div layout="row" layout-align="space-between">
                 <div flex="100" flex-gt-md="25" class="avatar large">
                     <img src="<?=$about->image->first->httpUrl?>" alt="">
-                    <br><?=$author->username?>
                 </div>
                 <p flex="100" flex-gt-md="75">
                     <?=$about->summary?>
