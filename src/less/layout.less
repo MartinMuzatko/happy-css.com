@@ -1,12 +1,17 @@
 .header {
     &--extended {
         .c-stripe(8em, medium);
-        padding-top: 4.5em;
-        padding-bottom: 3em;
+        padding-top: 4em;
+        padding-bottom: 2.5em;
+        @media screen and (min-width: @breakpoint-sm) {
+            padding-top: 4.5em;
+            padding-bottom: 3em;
+        }
         background-color: @color-dark;
         background-size: cover;
         background-position: center;
         text-shadow: 0 1px 2px @color-dark-shadow, 0 1px 0 @color-dark-shadow;
+        text-align: center;
     }
     font-family: @font-heading;
     position: relative;
@@ -21,10 +26,14 @@
     }
 
     &--reduced {
-        padding: 0 1em;
-        position: absolute;
+        background: @color-dark;
+        padding: 1em;
+        @media screen and (min-width: @breakpoint-sm) {
+            position: absolute;
+            background: @color-dark-shadow;
+            padding: 0 1em;
+        }
         z-index: @z-index-overlay;
-        background: @color-dark-shadow;
         a {
             color: @color-light;
             text-shadow: 0 1px 2px @color-dark-shadow, 0 1px 0 @color-dark-shadow;
