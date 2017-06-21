@@ -21,7 +21,7 @@
                     <div class="avatar" layout="row" layout-align="start center">
                         <img src="<?=$page->createdUser->image->first->httpUrl?>" alt="<?=$page->createdUser->username?>">
                         <span>
-                            Written by <a href="<?=$pages->get("title=about")->httpUrl ?>"><strong><?=$page->createdUser->username?></strong></a>
+                            Written by <a href="<?=$pages->get('/about/')->httpUrl ?>"><strong><?=$page->createdUser->username?></strong></a>
                             <br>on <time><?=date('jS \o\f F Y', $page->published)?></time>
                             <br><img src="https://img.shields.io/twitter/follow/martinmuzatko.svg?style=social&label=Follow%20@martinmuzatko" alt="">
                         </span>
