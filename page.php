@@ -77,7 +77,7 @@
                 <div>
                     <h2>See other <?=strtolower($page->parent->contenttypeplural)?></h2>
                     <div layout="row" layout-align="space-between">
-                        <? foreach($page->siblings->not($page)->filter('limit=4') as $sibling): ?>
+                        <? foreach($page->siblings->not($page)->filter('limit=4, sort=-published') as $sibling): ?>
                             <div flex-start flex="100" flex-gt-sm="45">
                                 <?=articlePreview($sibling)?>
                             </div>
