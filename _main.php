@@ -1,18 +1,8 @@
 <?php namespace ProcessWire;
 $content = ob_get_clean();
 if ($input->post->action == 'subscribe') {
-    $groupsApi = (new \MailerLiteApi\MailerLite($config->mailerLiteApiKey))->groups();
-
-    $subscriber = [
-        'email' => $sanitizer->email($input->post->email),
-        'fields' => [
-            'name' => $input->post->name
-        ]
-    ];
-
-    $response = $groupsApi->addSubscriber((int) $input->post->groupid, $subscriber);
+    include('partials/subscribe.php');
 }
-
 $htmlTitle = $page->title == $homepage->title ? $page->title : "$page->title | $homepage->title";
 ?>
 <!DOCTYPE html>
