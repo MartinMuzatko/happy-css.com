@@ -9,10 +9,9 @@
             Email
             <input type="email" name="email" size="25" placeholder="Email" required autocomplete>
         </label>
-        <label for="lastname" style="position: absolute; left: 200%">
-            Last name
+        <label for="honeypot" style="display: none;">
             <!-- Also, this is a honeypot for spambots. Leave it empty -->
-            <input tabindex="-1" type="text" name="lastname" size="25" placeholder="Last name" autocomplete>
+            <input tabindex="-1" type="text" name="honeypot">
         </label>
         <input type="submit" class="button secondary" value="<?=$content->submit?>">
         <input type="hidden" name="groupid" value="<?=$content->groupid?>">

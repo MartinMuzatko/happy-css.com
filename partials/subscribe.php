@@ -4,12 +4,11 @@ $groupsApi = (new \MailerLiteApi\MailerLite($config->mailerLiteApiKey))->groups(
 $subscriber = [
     'email' => $sanitizer->email($input->post->email),
     'fields' => [
-        'name' => $input->post->name,
-        'last_name' => $input->post->lastname,
+        'name' => $input->post->name
     ]
 ];
 
-if (!strlen($input->post->lastname)) {
+if (!strlen($input->post->honeypot) && strpos($input->post->name, '59') !== 0) {
     $response = $groupsApi->addSubscriber((int) $input->post->groupid, $subscriber);
 } else {
     ob_start();
@@ -21,9 +20,9 @@ if (!strlen($input->post->lastname)) {
                 <div>
                     <div class="title">
                         <h1>
-                            I can't sign you up.
+                            Yikes - there is a problem with your signup.
                         </h1>
-                        <p class="description">You are not supposed to fill in the lastname field in the signup form - it is a honeypot for bots. Please try again</p>
+                        <p class="description">Your name matches a common spambot name. Please omit any numbers from your name. </p>
                     </div>
                 </div>
             </header>
