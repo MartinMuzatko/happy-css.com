@@ -1,7 +1,8 @@
 qnode_modules
 .DS_Store
 .ftpconfig
-/*.js
+/vendor.js
+/main.js
 *.map
 css
 
