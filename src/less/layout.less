@@ -302,11 +302,17 @@ main {
 	top: 0.5em;
 }
 
-.code-result {
-    margin-top: 2em;
-    border: 1px solid @color-dark;
-    border-top-width: 0;
-    border-radius: .25em;
+.code-block {
+    margin: 2em 0;
+    &--boxed {
+        border-radius: .25em;
+        overflow: hidden;
+        .code-block__preview, .code-block__content {
+            border: 1px solid @color-dark;
+            border-top-width: 0;
+            border-radius: 0 0 .25em .25em !important;
+        }
+    }
     &__title {
         // display: block;
         text-transform: uppercase;
