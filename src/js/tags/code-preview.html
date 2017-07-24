@@ -1,14 +1,12 @@
 <code-preview>
-    <div class="code-result">
-        <div class="code-result__title" layout="row" layout-align="space-between">
+    <div class="code-block {'code-block--boxed' : !seamless}">
+        <div if={!seamless} class="code-block__title" layout="row" layout-align="space-between">
             <div>{codeVisible ? 'Code' : 'Result'}</div>
-            <small onclick={toggleVisibility}>See {!codeVisible ? 'code' : 'result'}</small>
+            <small if={!(hideCodeSwitch || seamless)} onclick={toggleVisibility}>See {!codeVisible ? 'code' : 'result'}</small>
         </div>
-        <div ref="preview" show={!codeVisible} class="code-result__preview">
+        <div ref="preview" show={!codeVisible} class="code-block__preview">
         </div>
-        <div show={codeVisible} class="code-result__preview">
-            <pre class="language-{opts.language}"><code class="language-{opts.language}" ref="code"><yield from="code" /></code></pre>
-        </div>
+        <pre show={codeVisible} class="code-block__content language-{opts.language}"><code class="language-{opts.language}" ref="code"><yield from="code" /></code></pre>
     </div>
     <style>
         small {
@@ -18,8 +16,14 @@
     <script>
         import Prism from '../vendor/prism'
 
+        // current state of switch
         this.codeVisible = false
+        // code to show/render
         this.code = ''
+        // seamless - without border
+        this.seamless = this.opts.seamless == ''
+        this.hideCodeSwitch = this.opts.hidecode == ''
+        console.log(this)
 
         toggleVisibility() {
             this.codeVisible = !this.codeVisible

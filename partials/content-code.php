@@ -24,8 +24,10 @@
             <div <?=$flex?>>
                 <?php $language = $code->codelanguage->title == 'riot' ? 'html' : $code->codelanguage->title; ?>
                 <? if($code->showcode):?>
-                    <div style="background-color: <?=$pages->get('/tags/'.$code->codelanguage->title)->color?>" class="code code-<?=$language?>"><?=strtoupper($code->codelanguage->title)?></div>
-                    <pre><code class="language-<?=$language?>"><?=htmlentities($code->code)?></code></pre>
+                    <div class="code-block code-block--boxed">
+                        <div class="code-block__title" style="background-color: <?=$pages->get('/tags/'.$code->codelanguage->title)->color?>"><?=strtoupper($code->codelanguage->title)?></div>
+                        <pre class="code-block__content"><code class="language-<?=$language?>"><?=htmlentities($code->code)?></code></pre>
+                    </div>
                 <? endif ?>
                 <? if($code->showpreview):?>
                     <? $codeId = $page->name.rand(10000,90000);?>
@@ -36,7 +38,11 @@
                             <?=$code->code?>
                         <? endif ?>
                     </div>
-                    <code-preview preview-id="<?=$codeId?>" language="<?=$language?>">
+                    <code-preview
+                        <?=$code->seamless ? 'seamless' : ''?>
+                        <?=$code->showpreview && $code->showcode ? 'hidecode' : ''?>
+                        preview-id="<?=$codeId?>"
+                        language="<?=$language?>">
                         <yield to="code"><?=str_replace('}','\\}', str_replace('{','\\{',htmlentities($code->code)))?></yield>
                     </code-preview>
                 <? endif ?>
