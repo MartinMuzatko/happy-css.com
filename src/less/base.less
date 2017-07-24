@@ -211,9 +211,28 @@ ul,ol {
 
 ol
 {
-    list-style-type: decimal;
-    ol {
-        list-style-type: lower-alpha;
+
+    list-style: none;
+    counter-reset: item;
+    li {
+        position: relative;
+        padding-left: 2em;
+        &::before {
+            counter-increment: item;
+            content: counter(item);
+            position: absolute;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            border-radius: 100%;
+            text-align: center;
+            font-size: 0.6em;
+            font-family: @font-heading;
+            color: @color-light;
+            background-color: @color-primary;
+            left: 0;
+            transform: translateY(50%);
+        }
     }
 }
 
