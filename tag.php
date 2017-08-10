@@ -11,7 +11,10 @@
                 $count = $articles->count;
                 ?>
                 <h1><?=$page->title?></h1>
-                <p class="description"><strong><?=$count?> articles<?=$count>1?'s':''?></strong> tagged with <span class="tag" style="background:<?=$page->color?>">#<?=$page->title?></span></p>
+                <p class="description">
+					<strong><?=$count?> article<?=$count>1?'s':''?></strong> tagged with <span class="tag" style="background:<?=$page->color?>">#<?=$page->title?></span>
+				</p>
+				<?=$page->text?>
             </div>
         </div>
     </header>
