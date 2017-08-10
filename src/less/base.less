@@ -137,14 +137,16 @@ a {
 	color: @color-primary;
 }
 
-p a {
-	&:hover {
-		text-decoration: underline;
-		text-decoration-skip: ink;
-		text-decoration-color: @color-primary-dark;
-	}
-	&:visited {
-		color: lighten(@color-primary, 10%);
+p, li, table, dl {
+	a {
+		&:hover {
+			text-decoration: underline;
+			text-decoration-skip: ink;
+			text-decoration-color: @color-primary-dark;
+		}
+		&:visited {
+			color: lighten(@color-primary, 10%);
+		}
 	}
 }
 
