@@ -15,7 +15,7 @@
             <? endforeach; ?>
         </nav>
         <form action="<?=$pages->get('/search/')->httpUrl?>" class="search" flex-end layout="row" layout-align="center center">
-            <input type="text" name="for" size="20" placeholder="Search topics" value="<?=$input->get->for?>">
+            <input type="search" name="for" size="20" placeholder="Search topics" value="<?=$input->get->for?>">
         </form>
     </div>
 </header>
