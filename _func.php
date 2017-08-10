@@ -71,13 +71,13 @@ function articlePreview($page) {
 			<a href="<?=$page->httpUrl?>">
 				<? if($page->image && $page->image->first):?>
 					<img class="article-preview__teaserimage" src="<?=$page->image->first->size(1920, 500)->httpUrl?>" alt="<?=$page->title?>">
-                <? elseif($page->backgroundcolor && $page->backgroundcolor->title != 'light' && $page->backgroundcolor->title): ?>
-                    <div style="padding: 3em;" class="article-preview__teaserimage stripe--<?=$page->backgroundcolor->title?>"></div>
 				<? endif; ?>
+                <? //elseif($page->backgroundcolor && $page->backgroundcolor->title != 'light' && $page->backgroundcolor->title): ?>
+                    <!-- <div style="padding: 3em;" class="article-preview__teaserimage stripe--<?=$page->backgroundcolor->title?>"></div> -->
 				<div class="title">
 					<h3><?=$page->title?></h3>
-					<small><time><?=date('jS \o\f F Y', $page->published)?></time></small>
-					<br><?=listingOfSeries($page)?>
+					<!-- <small class="article-preview__date"><time><?=date('jS \o\f F Y', $page->published)?></time></small> -->
+					<!-- <br><?=listingOfSeries($page)?> -->
 					<p><?=$page->summary?></p>
 				</div>
 			</a>
