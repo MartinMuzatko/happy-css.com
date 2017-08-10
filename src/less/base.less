@@ -133,8 +133,19 @@ figure {
 }
 
 a {
-    text-decoration: none;
-    color: @color-primary;
+	text-decoration: none;
+	color: @color-primary;
+}
+
+p a {
+	&:hover {
+		text-decoration: underline;
+		text-decoration-skip: ink;
+		text-decoration-color: @color-primary-dark;
+	}
+	&:visited {
+		color: lighten(@color-primary, 10%);
+	}
 }
 
 pre {

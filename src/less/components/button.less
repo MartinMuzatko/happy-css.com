@@ -10,6 +10,9 @@ BUTTON COMPONENT
 .button(@color: @color-primary, @type: full) {
     border: none;
     white-space: normal;
+	&:hover {
+		text-decoration: none;
+	}
     & when (@type = outline) {
         background-color: transparent;
         color: @color-light;
@@ -30,11 +33,17 @@ BUTTON COMPONENT
     }
     & when (@type = full) {
         background-color: @color;
-        color: contrast(@color, @color-dark, @color-light);
-        &:focus {
+		color: contrast(@color, @color-dark, @color-light);
+        &:focus, &:active {
             top: .2em;
             box-shadow: none;
         }
+		&:visited {
+			color: contrast(@color, @color-dark, @color-light);
+		}
+		&:hover {
+			background-color: lighten(@color, 10%);
+		}
     }
 }
 
