@@ -51,6 +51,7 @@
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.13.1",
     "trianglify": "^1.0.1",
-    "webpack": "beta"
+    "webpack": "beta",
+    "whatwg-fetch": "^2.0.3"
   }
 }
