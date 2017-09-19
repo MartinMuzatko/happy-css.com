@@ -91,6 +91,7 @@ $htmlTitle = $page->title == $homepage->title ? $page->title : "$page->title | $
             ga('send', 'pageview');
         </script>
     <? endif; ?>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="<?=$config->urls->templates?>vendor.js"></script>
     <script src="<?=$config->urls->templates?>main.js"></script>
 </body>
